@@ -7,13 +7,51 @@
 			content="width=device-width, initial-scale=1.0"
 		/>
 		<script src="https://cdn.tailwindcss.com"></script>
+		<script
+			src="https://unpkg.com/htmx.org@1.9.8"
+			integrity="sha384-rgjA7mptc2ETQqXoYC3/zJvkU7K/aP44Y+z7xQuJiVnB/422P/Ak+F/AqFR7E4Wr"
+			crossorigin="anonymous"
+		></script>
+
 		<title>Document</title>
 	</head>
 	<body>
-		<h1>hello world</h1>
+		<main class="w-full flex flex-col items-center">
+			<h1 class="pt-4 text-3xl font-bold pb-4">Timeline Game</h1>
 
-		{{range .Films}}
-		<p class="text-3xl">{{.Title}} - {{.Director}}</p>
-		{{end}}
+			<section class="flex gap-4">
+				{{range .Events}}
+
+				<div class="border border-neutral-500 rounded-xl p-4 flex flex-col items-center gap-4">
+					<p class="text-3xl">{{.Event}}</p>
+					<p>{{.Year}}</p>
+				</div>
+				{{end}}
+			</section>
+			<section class="pt-20 w-96 flex flex-col gap-4">
+				<h3 class="text-center text-2xl font-bold">Add event</h3>
+				<form class="flex flex-col">
+					<div class="flex justify-between w-full">
+						<label for="eventDescription">Event description</label>
+						<input
+							class="border border-neutral-500"
+							type="text"
+							name="eventDescription"
+							id="eventDescription"
+						/>
+					</div>
+					<div class="flex justify-between w-full">
+						<label for="eventYear">Event Year</label>
+						<input
+							class="border border-neutral-500"
+							type="text"
+							name="eventYear"
+							id="eventYear"
+						/>
+					</div>
+					<button>Add Event</button>
+				</form>
+			</section>
+		</main>
 	</body>
 </html>

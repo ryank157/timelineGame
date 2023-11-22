@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"sort"
 	"text/template"
 )
 
 type Film struct {
-	Title string
-	Director string
+	Event string
+	Year int64
 }
 
 func main() {
@@ -17,12 +18,19 @@ func main() {
 
 	h1 := func (w http.ResponseWriter, r *http.Request){
 		tmpl := template.Must(template.ParseFiles("./src/index.html"))
-		films := map[string][]Film{
-			"Films":{
-				{Title: "The Godfather", Director: "Francis Ford Coppola"},
+		events := map[string][]Film{
+			"Events":{
+				{Event: "The Godfather", Year: 2000},
+				{Event: "The Godfather", Year: 1998},
+				{Event: "The Godfather", Year: 1999},
+				{Event: "The Godfather", Year: 2001},
 			},
 		}
-		tmpl.Execute(w, films)
+		sort.Slice(events["Events"], func(i,j int) bool {
+			return events["Events"][i].Year < events["Events"][j].Year
+		})
+
+		tmpl.Execute(w, events)
 	}
 	http.HandleFunc("/",h1)
 	log.Fatal(http.ListenAndServe("localhost:8000", nil))
