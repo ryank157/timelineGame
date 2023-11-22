@@ -30,7 +30,10 @@
 			</section>
 			<section class="pt-20 w-96 flex flex-col gap-4">
 				<h3 class="text-center text-2xl font-bold">Add event</h3>
-				<form class="flex flex-col">
+				<form
+					class="flex flex-col gap-4"
+					hx-submit
+				>
 					<div class="flex justify-between w-full">
 						<label for="eventDescription">Event description</label>
 						<input
