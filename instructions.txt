@@ -1,0 +1,38 @@
+install sqlite3
+
+C:\workspace\timelinegame>go install github.com/mattn/go-sqlite3@latest
+go: downloading github.com/mattn/go-sqlite3 v1.14.18
+package github.com/mattn/go-sqlite3 is not a main package
+
+install sqlite-utils
+C:\workspace\timelinegame>pip install sqlite-utils
+Collecting sqlite-utils
+  Downloading https://files.pythonhosted.org/packages/0c/d4/4e27f7aeeda5b0ed9da7cacffe81f2e48cd5a4f347c72011390f04267ac4/sqlite_utils-3.30-py3-none-any.whl (63kB)
+     |████████████████████████████████| 71kB 1.5MB/s
+Collecting click (from sqlite-utils)
+  Downloading https://files.pythonhosted.org/packages/4a/a8/0b2ced25639fb20cc1c9784de90a8c25f9504a7f18cd8b5397bd61696d7d/click-8.0.4-py3-none-any.whl (97kB)
+     |████████████████████████████████| 102kB 3.3MB/s
+Collecting click-default-group-wheel (from sqlite-utils)
+  Downloading https://files.pythonhosted.org/packages/0e/9e/ba83ebc20aa74cd4030a41fa2a9c14132d522d859b09ba1f54fbacc7f5a4/click_default_group_wheel-1.2.3-py3-none-any.whl
+Collecting sqlite-fts4 (from sqlite-utils)
+  Downloading https://files.pythonhosted.org/packages/51/29/0096e8b1811aaa78cfb296996f621f41120c21c2f5cd448ae1d54979d9fc/sqlite_fts4-1.0.3-py3-none-any.whl
+Collecting tabulate (from sqlite-utils)
+  Downloading https://files.pythonhosted.org/packages/92/4e/e5a13fdb3e6f81ce11893523ff289870c87c8f1f289a7369fb0e9840c3bb/tabulate-0.8.10-py3-none-any.whl
+Collecting python-dateutil (from sqlite-utils)
+  Downloading https://files.pythonhosted.org/packages/36/7a/87837f39d0296e723bb9b62bbb257d0355c7f6128853c78955f57342a56d/python_dateutil-2.8.2-py2.py3-none-any.whl (247kB)
+     |████████████████████████████████| 256kB 3.3MB/s
+Collecting importlib-metadata; python_version < "3.8" (from click->sqlite-utils)
+  Downloading https://files.pythonhosted.org/packages/a0/a1/b153a0a4caf7a7e3f15c2cd56c7702e2cf3d89b1b359d1f1c5e59d68f4ce/importlib_metadata-4.8.3-py3-none-any.whl
+Requirement already satisfied: colorama; platform_system == "Windows" in c:\users\kingb\appdata\roaming\python\python36\site-packages (from click->sqlite-utils) (0.4.1)
+Collecting click-default-group (from click-default-group-wheel->sqlite-utils)
+  Downloading https://files.pythonhosted.org/packages/2c/1a/aff8bb287a4b1400f69e09a53bd65de96aa5cee5691925b38731c67fc695/click_default_group-1.2.4-py2.py3-none-any.whl
+Requirement already satisfied: six>=1.5 in c:\users\kingb\appdata\roaming\python\python36\site-packages (from python-dateutil->sqlite-utils) (1.12.0)
+Collecting typing-extensions>=3.6.4; python_version < "3.8" (from importlib-metadata; python_version < "3.8"->click->sqlite-utils)
+  Downloading https://files.pythonhosted.org/packages/45/6b/44f7f8f1e110027cf88956b59f2fad776cca7e1704396d043f89effd3a0e/typing_extensions-4.1.1-py3-none-any.whl
+Collecting zipp>=0.5 (from importlib-metadata; python_version < "3.8"->click->sqlite-utils)
+  Downloading https://files.pythonhosted.org/packages/bd/df/d4a4974a3e3957fd1c1fa3082366d7fff6e428ddb55f074bf64876f8e8ad/zipp-3.6.0-py3-none-any.whl
+Installing collected packages: typing-extensions, zipp, importlib-metadata, click, click-default-group, click-default-group-wheel, sqlite-fts4, tabulate, python-dateutil, sqlite-utils
+Successfully installed click-8.0.4 click-default-group-1.2.4 click-default-group-wheel-1.2.3 importlib-metadata-4.8.3 python-dateutil-2.8.2 sqlite-fts4-1.0.3 sqlite-utils-3.30 tabulate-0.8.10 typing-extensions-4.1.1 zipp-3.6.0
+WARNING: You are using pip version 19.2.3, however version 21.3.1 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
