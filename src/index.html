@@ -23,19 +23,9 @@
 			<h1 class="pt-4 text-3xl font-bold pb-4">Timeline Game</h1>
 
 			<!-- Seems like each section should be its own template file -->
+			<!-- Then I can just swap stuff out as I need based on the page I want to show -->
 
-			<section
-				class="flex gap-4"
-				id="eventList"
-			>
-				{{range .Events}} {{block "eventListElement" .}}
-
-				<div class="border border-neutral-500 rounded-xl p-4 flex flex-col items-center gap-4">
-					<p class="text-3xl">{{.Event}}</p>
-					<p>{{.Year}}</p>
-				</div>
-				{{end}} {{end}}
-			</section>
+			{{template "room" .}}
 
 			<section
 				id="joinRoom"

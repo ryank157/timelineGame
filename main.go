@@ -28,7 +28,7 @@ func main() {
 	})
 
 	h1 := func (w http.ResponseWriter, r *http.Request){
-		tmpl := template.Must(template.ParseFiles("./src/index.html"))
+		tmpl := template.Must(template.ParseFiles("./src/index.html", "./src/room.html"))
 		
 
 		err := tmpl.Execute(w, events)
@@ -42,7 +42,7 @@ if err != nil {
 	} 
 
 	addEvent := func (w http.ResponseWriter, r *http.Request){
-		fmt.Println("made it here")
+		// fmt.Println("made it here")
 		if err := r.ParseForm(); err != nil {
 			fmt.Println("unknown error")
 			// Handle error
@@ -70,8 +70,12 @@ if err != nil {
 })
 	
 	}
+	// joinRoom := func (w http.ResponseWriter, r *http.Request){
+	// 	tmpl := template.Must(template.ParseFiles("./src/room.html"))
+	// }
 	http.HandleFunc("/",h1)
 	http.HandleFunc("/addEvent",addEvent)
+	// http.HandleFunc("/joinRoom",joinRoom)
 	log.Fatal(http.ListenAndServe("localhost:8000", nil))
 
 }

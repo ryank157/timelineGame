@@ -1,0 +1,47 @@
+{{define "room"}}
+<ul
+	class="flex gap-4 items-center"
+	id="eventList"
+>
+	<li class="w-5 h-5 border border-neutral-500 rounded-full">
+		<input
+			class="sr-only peer"
+			type="radio"
+			value="first"
+			name="answer"
+			id="first"
+		/>
+		<label
+			for="first"
+			class="cursor-pointer w-full h-full rounded-full flex flex-col hover:bg-slate-200 peer-checked:bg-green-500"
+		>
+		</label>
+	</li>
+	{{range .Events}}
+	<li>
+		<div class="border border-neutral-500 rounded-xl p-4 flex flex-col items-center gap-4">
+			<p class="text-3xl">{{.Event}}</p>
+			<p>{{.Year}}</p>
+		</div>
+	</li>
+	<li class="w-5 h-5 border border-neutral-500 rounded-full">
+		<input
+			class="sr-only peer"
+			type="radio"
+			value='{{printf "%s-%d" .Event .Year}}'
+			name="answer"
+			id='{{printf "%s-%d" .Event .Year}}'
+		/>
+		<label
+			for='{{printf "%s-%d" .Event .Year}}'
+			class="cursor-pointer w-full h-full rounded-full flex flex-col hover:bg-slate-200 peer-checked:bg-green-500"
+		>
+		</label>
+	</li>
+	{{end}}
+</ul>
+
+<section>
+	<h3></h3>
+</section>
+{{end}}
