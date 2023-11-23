@@ -13,7 +13,7 @@
 			crossorigin="anonymous"
 		></script>
 
-		<title>Document</title>
+		<title>Timeline game</title>
 	</head>
 	<body>
 		<main
@@ -22,24 +22,53 @@
 		>
 			<h1 class="pt-4 text-3xl font-bold pb-4">Timeline Game</h1>
 
+			<!-- Seems like each section should be its own template file -->
+
 			<section
 				class="flex gap-4"
 				id="eventList"
 			>
-				{{range .Events}}
+				{{range .Events}} {{block "eventListElement" .}}
 
 				<div class="border border-neutral-500 rounded-xl p-4 flex flex-col items-center gap-4">
 					<p class="text-3xl">{{.Event}}</p>
 					<p>{{.Year}}</p>
 				</div>
-				{{end}}
+				{{end}} {{end}}
 			</section>
+
+			<section
+				id="joinRoom"
+				class="pt-20 w-96 flex flex-col gap-4 items-center"
+			>
+				<h3 class="text-center text-2xl font-bold">Join room</h3>
+				<div class="flex justify-between w-full">
+					<label for="joinRoomInput">Enter room id</label>
+					<input
+						type="text"
+						class="border border-neutral-500"
+						name="joinRoomInput"
+						id="joinRoomInput"
+						placeholder="1234"
+					/>
+				</div>
+				<button
+					hx-post="/joinRoom"
+					hx-target="#main"
+					class="border border-neutral-500 w-24 py-2 px-1 hover:bg-slate-200 cursor-pointer"
+				>
+					Join room
+				</button>
+			</section>
+
 			<section class="pt-20 w-96 flex flex-col gap-4">
 				<h3 class="text-center text-2xl font-bold">Add event</h3>
 				<form
 					class="flex flex-col gap-4"
 					hx-post="/addEvent"
-					hx-target="#main"
+					hx-target="#eventList"
+					hx-swap="beforeend"
+					id="addEventForm"
 				>
 					<div class="flex justify-between w-full">
 						<label for="eventDescription">Event description</label>

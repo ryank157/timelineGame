@@ -31,7 +31,14 @@ func main() {
 		tmpl := template.Must(template.ParseFiles("./src/index.html"))
 		
 
-		tmpl.Execute(w, events)
+		err := tmpl.Execute(w, events)
+if err != nil {
+    log.Printf("Error executing template: %v", err)
+    // Optionally send an error response to the client
+    http.Error(w, "Error rendering page", http.StatusInternalServerError)
+    return
+}
+
 	} 
 
 	addEvent := func (w http.ResponseWriter, r *http.Request){
@@ -51,25 +58,17 @@ func main() {
 			// Handle error
 			return
 		}
+		 
 
-	
-	   // Create a new Film instance
-	   newEvent := Film{
-        Event: eventDescription,
-        Year: eventYear,
-    }
 
-    // Append the new event to the Events slice
-    events["Events"] = append(events["Events"], newEvent)
-	fmt.Print(events)
-
-    // Re-sort the Events slice
-    sort.Slice(events["Events"], func(i, j int) bool {
-        return events["Events"][i].Year < events["Events"][j].Year
-    })
 
     tmpl := template.Must(template.ParseFiles("./src/index.html"))
-    tmpl.Execute(w, events)
+
+   tmpl.ExecuteTemplate(w, "eventListElement", Film{
+	Event: eventDescription,
+	Year: eventYear,
+})
+	
 	}
 	http.HandleFunc("/",h1)
 	http.HandleFunc("/addEvent",addEvent)
