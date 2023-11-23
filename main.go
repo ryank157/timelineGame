@@ -76,6 +76,6 @@ if err != nil {
 	http.HandleFunc("/",h1)
 	http.HandleFunc("/addEvent",addEvent)
 	// http.HandleFunc("/joinRoom",joinRoom)
-	log.Fatal(http.ListenAndServe("localhost:8000", nil))
+	log.Fatal(http.ListenAndServe(":8080", nil))
 
 }
